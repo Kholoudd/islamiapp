@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 
-class HomeLayout extends StatelessWidget {
+class HomeLayout extends StatefulWidget {
   static const String routeName = "HomeLayout";
 
   const HomeLayout({super.key});
 
   @override
+  State<HomeLayout> createState() => _HomeLayoutState();
+}
+
+class _HomeLayoutState extends State<HomeLayout> {
+  int selectedNavgatorIndex = 0;
+
+  // List<Widget> screens=[
+  //   QuranPage(),
+  //   HadethPage(),
+  //   SebhaPage(),
+  //   RadioPage(),
+  //   SettingPage(),
+  // ];
   Widget build(BuildContext context) {
     final mediaquary = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
         image: AssetImage("assets/images/default_bg.png"),
         fit: BoxFit.cover,
@@ -20,64 +33,20 @@ class HomeLayout extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Center(
-              child: Text(
-            "إسلامي",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          )),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0XFFB7935F),
-          items: [
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(
-                  "assets/images/icon_radio.png",
-                ),
-                color: Colors.white,
-                size: 50,
+            child: Text(
+              "إسلامي",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-              label: "radio",
             ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(
-                  "assets/images/icon_sebha.png",
-                ),
-                color: Colors.white,
-                size: 50,
-              ),
-              label: "sebha",
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(
-                  "assets/images/icon_hadeth.png",
-                ),
-                color: Colors.white,
-                size: 50,
-              ),
-              label: "hedeth",
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(
-                  "assets/images/icon_quran.png",
-                ),
-                size: 50,
-              ),
-              label: "quran",
-            ),
-          ],
+          ),
         ),
         body: Column(
           children: [
             Image.asset("assets/images/qur2an_screen_logo.png"),
-            Divider(
+            const Divider(
               thickness: 2,
               color: Color(0XFFB7935F),
               height: 5,
@@ -86,42 +55,93 @@ class HomeLayout extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      "رقم السوره",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Colors.black),
-                    ),
+                const Expanded(
+                  child: Text(
+                    "رقم السوره",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        color: Colors.black),
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 Container(
                   height: 45,
                   width: 2.2,
-                  color: Color(0XFFB7935F),
+                  color: const Color(0XFFB7935F),
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      "إسم السوره",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Colors.black,
-                      ),
+                const Expanded(
+                  child: Text(
+                    "إسم السوره",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                      color: Colors.black,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
             ),
-            Divider(
+            const Divider(
               thickness: 2,
               color: Color(0XFFB7935F),
               height: 5,
               indent: 5,
               endIndent: 5,
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: const Color(0XFFB7935F),
+          selectedIconTheme: const IconThemeData(color: Colors.black, size: 35),
+          selectedItemColor: Colors.black,
+          unselectedIconTheme:
+              const IconThemeData(color: Colors.white, size: 30),
+          unselectedItemColor: Colors.white,
+          onTap: (int index) {
+            setState(() {
+              selectedNavgatorIndex = index;
+            });
+          },
+          currentIndex: selectedNavgatorIndex,
+          items: const [
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage(
+                  "assets/images/icon_quran.png",
+                ),
+              ),
+              label: "quran",
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage(
+                  "assets/images/icon_hadeth.png",
+                ),
+              ),
+              label: "hedeth",
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage(
+                  "assets/images/icon_sebha.png",
+                ),
+              ),
+              label: "sebha",
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage(
+                  "assets/images/icon_radio.png",
+                ),
+              ),
+              label: "radio",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: "settings",
             ),
           ],
         ),
