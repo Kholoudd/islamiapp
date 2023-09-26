@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami/moduls/hadeth/hadethPage.dart';
+import 'package:islami/moduls/quran/quranPage.dart';
+import 'package:islami/moduls/radio/radioPage.dart';
+import 'package:islami/moduls/sebha/sebhaPage.dart';
+import 'package:islami/moduls/setting/settingPage.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routeName = "HomeLayout";
@@ -12,13 +17,14 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   int selectedNavgatorIndex = 0;
 
-  // List<Widget> screens=[
-  //   QuranPage(),
-  //   HadethPage(),
-  //   SebhaPage(),
-  //   RadioPage(),
-  //   SettingPage(),
-  // ];
+  List<Widget> screens = [
+    QuranPage(),
+    HadethPage(),
+    SebhaPage(),
+    RadioPage(),
+    SettingPage(),
+  ];
+
   Widget build(BuildContext context) {
     final mediaquary = MediaQuery.of(context).size;
     return Container(
@@ -45,51 +51,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         ),
         body: Column(
           children: [
-            Image.asset("assets/images/qur2an_screen_logo.png"),
-            const Divider(
-              thickness: 2,
-              color: Color(0XFFB7935F),
-              height: 5,
-              indent: 5,
-              endIndent: 5,
-            ),
-            Row(
-              children: [
-                const Expanded(
-                  child: Text(
-                    "رقم السوره",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Colors.black),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Container(
-                  height: 45,
-                  width: 2.2,
-                  color: const Color(0XFFB7935F),
-                ),
-                const Expanded(
-                  child: Text(
-                    "إسم السوره",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-            const Divider(
-              thickness: 2,
-              color: Color(0XFFB7935F),
-              height: 5,
-              indent: 5,
-              endIndent: 5,
-            ),
+            screens[selectedNavgatorIndex],
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
