@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
-class ItemWidgits extends StatelessWidget {
+class ItemWidgets extends StatelessWidget {
   @override
+  final String suraName;
+  final String suraNumber;
+
+  const ItemWidgets(
+      {super.key, required this.suraName, required this.suraNumber});
+
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: Text(
-            "رقم السوره",
+            suraNumber,
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black),
             textAlign: TextAlign.center,
+            //textAlign: TextAlign.center,
           ),
         ),
         Container(
@@ -18,15 +25,16 @@ class ItemWidgits extends StatelessWidget {
           width: 2.2,
           color: const Color(0XFFB7935F),
         ),
-        const Expanded(
+        Expanded(
           child: Text(
-            "إسم السوره",
+            suraName,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 25,
               color: Colors.black,
             ),
             textAlign: TextAlign.center,
+            //textAlign: TextAlign.center,
           ),
         ),
       ],

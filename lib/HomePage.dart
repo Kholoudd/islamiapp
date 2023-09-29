@@ -49,11 +49,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            screens[selectedNavgatorIndex],
-          ],
-        ),
+        body: screens[selectedNavgatorIndex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: const Color(0XFFB7935F),
