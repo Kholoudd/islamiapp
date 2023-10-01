@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/HomePage.dart';
 import 'package:islami/SplashPage.dart';
 import 'package:islami/moduls/quran/quranDetails.dart';
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale("ar"),
       debugShowCheckedModeBanner: false,
       initialRoute: SplashPage.routeName,
       routes: {
