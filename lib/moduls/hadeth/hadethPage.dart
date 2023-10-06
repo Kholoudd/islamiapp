@@ -11,6 +11,7 @@ class _HadethPageState extends State<HadethPage> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     if (allHadethContent.isEmpty) {
       readHadeth();
     }
@@ -18,34 +19,30 @@ class _HadethPageState extends State<HadethPage> {
     return Column(
       children: [
         Image.asset("assets/images/hadeth_logo.png"),
-        const Divider(
+        Divider(
           height: 5,
-          color: Color(0XFFB7935F),
+          color: theme.primaryColor,
           thickness: 3,
         ),
-        const Text(
+        Text(
           "الأحاديث",
-          style: TextStyle(
-              fontWeight: FontWeight.w400, color: Colors.black, fontSize: 25),
+          style: theme.textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
-        const Divider(
+        Divider(
           height: 5,
-          color: Color(0XFFB7935F),
+          color: theme.primaryColor,
           thickness: 3,
         ),
         Expanded(
             child: ListView.builder(
-          itemBuilder: (context, index) => Text(
-            allHadethContent[index].hadethTitel,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 25,
-            ),
+              itemBuilder: (context, index) => Text(
+                allHadethContent[index].hadethTitel,
+            style: theme.textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),
-          itemCount: allHadethContent.length,
-        ))
+              itemCount: allHadethContent.length,
+            ))
       ],
     );
   }
@@ -56,10 +53,10 @@ class _HadethPageState extends State<HadethPage> {
     for (int i = 0; i < allHadeth.length; i++) {
       String textHadeth = allHadeth[i].trim();
       int indexOfFirstLine = textHadeth.indexOf("/n");
-      String Title = textHadeth.substring(0, indexOfFirstLine);
+      String title = textHadeth.substring(0, indexOfFirstLine);
       String content = textHadeth.substring(indexOfFirstLine + 1);
       HadethContent hadethContent =
-          HadethContent(hadethTitel: Title, hadethContent: content);
+          HadethContent(hadethTitel: title, hadethContent: content);
       allHadethContent.add(hadethContent);
       setState(() {});
     }

@@ -9,13 +9,13 @@ class ItemWidgets extends StatelessWidget {
       {super.key, required this.suraName, required this.suraNumber});
 
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Row(
       children: [
         Expanded(
           child: Text(
             suraNumber,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black),
+            style: theme.textTheme.bodyLarge,
             textAlign: TextAlign.center,
             //textAlign: TextAlign.center,
           ),
@@ -23,16 +23,12 @@ class ItemWidgets extends StatelessWidget {
         Container(
           height: 45,
           width: 2.2,
-          color: const Color(0XFFB7935F),
+          color: theme.primaryColor,
         ),
         Expanded(
           child: Text(
             suraName,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-              color: Colors.black,
-            ),
+            style: theme.textTheme.bodyLarge,
             textAlign: TextAlign.center,
             //textAlign: TextAlign.center,
           ),
