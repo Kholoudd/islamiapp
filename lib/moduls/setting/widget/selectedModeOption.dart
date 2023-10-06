@@ -7,6 +7,7 @@ class SelectedModeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(10),
@@ -19,11 +20,12 @@ class SelectedModeOption extends StatelessWidget {
         children: [
           Text(
             selectedThemeMode,
-            style: TextStyle(fontWeight: FontWeight.w500),
+            style: theme.textTheme.bodyLarge,
           ),
           Icon(
             Icons.check_box,
             size: 25,
+            color: theme.colorScheme.onSecondary,
           ),
         ],
       ),

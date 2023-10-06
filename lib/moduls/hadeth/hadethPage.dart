@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/moduls/hadeth/hadethDetails.dart';
 
 class HadethPage extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _HadethPageState extends State<HadethPage> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     if (allHadethContent.isEmpty) {
       readHadeth();
     }
@@ -18,48 +20,62 @@ class _HadethPageState extends State<HadethPage> {
     return Column(
       children: [
         Image.asset("assets/images/hadeth_logo.png"),
-        const Divider(
+        Divider(
           height: 5,
-          color: Color(0XFFB7935F),
+          color: theme.primaryColor,
           thickness: 3,
         ),
-        const Text(
+        Text(
           "الأحاديث",
-          style: TextStyle(
-              fontWeight: FontWeight.w400, color: Colors.black, fontSize: 25),
+          style: theme.textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
-        const Divider(
+        Divider(
           height: 5,
-          color: Color(0XFFB7935F),
+          color: theme.primaryColor,
           thickness: 3,
         ),
         Expanded(
-            child: ListView.builder(
-          itemBuilder: (context, index) => Text(
-            allHadethContent[index].hadethTitel,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 25,
+          child: ListView.separated(
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, HadethDetails.routeName,
+                    arguments: allHadethContent[index]);
+              },
+              child: Text(
+                allHadethContent[index].hadethTitel,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyLarge,
+              ),
             ),
-            textAlign: TextAlign.center,
+            separatorBuilder: (context, index) => Divider(
+              height: 10,
+              endIndent: 60,
+              indent: 60,
+              thickness: 1,
+            ),
+            itemCount: allHadethContent.length,
           ),
-          itemCount: allHadethContent.length,
-        ))
+        )
       ],
     );
   }
+
+  List<HadethContent> hadeth = [];
 
   readHadeth() async {
     String hadeth = await rootBundle.loadString("assets/files/ahadeth.txt");
     List<String> allHadeth = hadeth.split("#");
     for (int i = 0; i < allHadeth.length; i++) {
-      String textHadeth = allHadeth[i].trim();
-      int indexOfFirstLine = textHadeth.indexOf("/n");
-      String Title = textHadeth.substring(0, indexOfFirstLine);
-      String content = textHadeth.substring(indexOfFirstLine + 1);
+      String singelHadeth = allHadeth[i].trim();
+      List<String> hadithTitel = singelHadeth.trim().split("/n");
+      // int indexOfFirstLine = singelHadeth.indexOf("/n");
+      // String title = singelHadeth.substring(0, indexOfFirstLine);
+      // String content = singelHadeth.substring(indexOfFirstLine + 1);
+      String title = hadithTitel[0];
+      String content = hadithTitel.join("/n");
       HadethContent hadethContent =
-          HadethContent(hadethTitel: Title, hadethContent: content);
+          HadethContent(hadethTitel: title, hadethContent: content);
       allHadethContent.add(hadethContent);
       setState(() {});
     }

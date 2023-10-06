@@ -122,49 +122,43 @@ class QuranPage extends StatelessWidget {
   ];
 
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Column(
       children: [
         Image.asset("assets/images/qur2an_screen_logo.png"),
-        const Divider(
+        Divider(
           thickness: 2,
-          color: Color(0XFFB7935F),
+          // color: theme.primaryColor,
           height: 5,
           indent: 5,
           endIndent: 5,
         ),
         Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
                 "رقم السوره",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.black),
+                style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
             ),
             Container(
               height: 45,
               width: 2.2,
-              color: const Color(0XFFB7935F),
+              color: theme.dividerColor,
             ),
-            const Expanded(
+            Expanded(
               child: Text(
                 "إسم السوره",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                  color: Colors.black,
-                ),
+                style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
             ),
           ],
         ),
-        const Divider(
+        Divider(
           thickness: 2,
-          color: Color(0XFFB7935F),
+          // color: theme.primaryColor,
           height: 5,
           indent: 5,
           endIndent: 5,

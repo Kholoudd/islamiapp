@@ -18,15 +18,13 @@ class SettingItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuary = MediaQuery.of(context).size;
+    var theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           titel,
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-          ),
+          style: theme.textTheme.bodyLarge,
           textAlign: TextAlign.start,
         ),
         GestureDetector(
@@ -39,7 +37,7 @@ class SettingItems extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: Color(0XFFB7935F),
+                  color: theme.colorScheme.onPrimary,
                   width: 1.2,
                 )),
             child: Row(
@@ -47,14 +45,12 @@ class SettingItems extends StatelessWidget {
               children: [
                 Text(
                   selectedOne,
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: theme.textTheme.bodyLarge,
                 ),
                 Icon(
                   Icons.arrow_drop_down,
                   size: 40,
+                  color: theme.colorScheme.onSecondary,
                 ),
               ],
             ),

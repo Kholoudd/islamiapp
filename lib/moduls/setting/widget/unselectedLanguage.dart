@@ -7,6 +7,7 @@ class UnselectedLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -16,10 +17,7 @@ class UnselectedLanguage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            unselectedOptionLanguage,
-            style: TextStyle(fontWeight: FontWeight.w500),
-          ),
+          Text(unselectedOptionLanguage, style: theme.textTheme.bodyMedium),
         ],
       ),
     );

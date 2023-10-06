@@ -27,7 +27,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   ];
 
   Widget build(BuildContext context) {
-    final mediaquary = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(

@@ -15,12 +15,13 @@ class QuranDetails extends StatefulWidget {
 class _QuranDetailsState extends State<QuranDetails> {
   String suraContent = "";
   List<String> allSura = [];
-
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetails;
     if (suraContent.isEmpty) {
       readFile(args.suraNumber);
     }
+    var mediaQuary = MediaQuery.of(context).size;
+    var theme = Theme.of(context);
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -64,10 +65,7 @@ class _QuranDetailsState extends State<QuranDetails> {
                   children: [
                     Text(
                       "سورة ${args.suraName}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 30,
-                      ),
+                      style: theme.textTheme.bodyLarge,
                     ),
                     SizedBox(
                       width: 10,
@@ -80,7 +78,6 @@ class _QuranDetailsState extends State<QuranDetails> {
                 ),
               ),
               Divider(
-                color: Color(0XFFB7935F),
                 thickness: 3,
                 indent: 25,
                 endIndent: 25,
@@ -89,9 +86,10 @@ class _QuranDetailsState extends State<QuranDetails> {
                 child: ListView.builder(
                   itemBuilder: (context, index) => Text(
                     suraContent,
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                    style: theme.textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
+                  itemCount: allSura.length,
                 ),
               )
             ],

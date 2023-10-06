@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/HomePage.dart';
 import 'package:islami/SplashPage.dart';
+import 'package:islami/core/applicationTheme.dart';
+import 'package:islami/moduls/hadeth/hadethDetails.dart';
 import 'package:islami/moduls/quran/quranDetails.dart';
 
 void main() {
@@ -17,13 +19,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale("ar"),
+      locale: Locale("en"),
       debugShowCheckedModeBanner: false,
+      theme: ApplicationTheme.lightTheme,
+      darkTheme: ApplicationTheme.darkTheme,
       initialRoute: SplashPage.routeName,
       routes: {
         SplashPage.routeName: (context) => const SplashPage(),
         HomeLayout.routeName: (context) => const HomeLayout(),
         QuranDetails.routeName: (context) => QuranDetails(),
+        HadethDetails.routeName: (context) => HadethDetails()
       },
       home: SplashPage(),
     );

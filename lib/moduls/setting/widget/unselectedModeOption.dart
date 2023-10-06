@@ -7,6 +7,7 @@ class UnselectedModeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(10),
@@ -19,7 +20,7 @@ class UnselectedModeOption extends StatelessWidget {
         children: [
           Text(
             unselectedModeOption,
-            style: TextStyle(fontWeight: FontWeight.w500),
+            style: theme.textTheme.bodyMedium,
           ),
         ],
       ),
