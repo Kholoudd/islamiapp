@@ -78,6 +78,7 @@ class _QuranDetailsState extends State<QuranDetails> {
                 ),
               ),
               Divider(
+                color: theme.primaryColor,
                 thickness: 3,
                 indent: 25,
                 endIndent: 25,

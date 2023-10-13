@@ -23,7 +23,7 @@ class ItemWidgets extends StatelessWidget {
         Container(
           height: 45,
           width: 2.2,
-          color: theme.dividerColor,
+          color: theme.primaryColor,
         ),
         Expanded(
           child: Text(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/moduls/hadeth/hadethDetails.dart';
 
 class HadethPage extends StatefulWidget {
   @override
@@ -36,44 +35,26 @@ class _HadethPageState extends State<HadethPage> {
           thickness: 3,
         ),
         Expanded(
-          child: ListView.separated(
-            itemBuilder: (context, index) => GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, HadethDetails.routeName,
-                    arguments: allHadethContent[index]);
-              },
-              child: Text(
+            child: ListView.builder(
+              itemBuilder: (context, index) => Text(
                 allHadethContent[index].hadethTitel,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.bodyLarge,
-              ),
-            ),
-            separatorBuilder: (context, index) => Divider(
-              height: 10,
-              endIndent: 60,
-              indent: 60,
-              thickness: 1,
-            ),
-            itemCount: allHadethContent.length,
+            style: theme.textTheme.bodyLarge,
+            textAlign: TextAlign.center,
           ),
-        )
+              itemCount: allHadethContent.length,
+            ))
       ],
     );
   }
-
-  List<HadethContent> hadeth = [];
 
   readHadeth() async {
     String hadeth = await rootBundle.loadString("assets/files/ahadeth.txt");
     List<String> allHadeth = hadeth.split("#");
     for (int i = 0; i < allHadeth.length; i++) {
-      String singelHadeth = allHadeth[i].trim();
-      List<String> hadithTitel = singelHadeth.trim().split("/n");
-      // int indexOfFirstLine = singelHadeth.indexOf("/n");
-      // String title = singelHadeth.substring(0, indexOfFirstLine);
-      // String content = singelHadeth.substring(indexOfFirstLine + 1);
-      String title = hadithTitel[0];
-      String content = hadithTitel.join("/n");
+      String textHadeth = allHadeth[i].trim();
+      int indexOfFirstLine = textHadeth.indexOf("/n");
+      String title = textHadeth.substring(0, indexOfFirstLine);
+      String content = textHadeth.substring(indexOfFirstLine + 1);
       HadethContent hadethContent =
           HadethContent(hadethTitel: title, hadethContent: content);
       allHadethContent.add(hadethContent);

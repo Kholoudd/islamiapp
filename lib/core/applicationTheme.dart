@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApplicationTheme {
-  static Color primaryColor = const Color(0xFFB7935F);
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: primaryColor,
@@ -49,7 +48,11 @@ class ApplicationTheme {
         bodyLarge: GoogleFonts.poppins(
           fontWeight: FontWeight.bold,
           fontSize: 18,
+<<<<<<< HEAD
           color: Colors.black,
+=======
+          color: primaryColor,
+>>>>>>> origin/master
         ),
         bodyMedium: GoogleFonts.poppins(
           fontSize: 15,
