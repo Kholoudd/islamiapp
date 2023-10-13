@@ -4,18 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 class ApplicationTheme {
 
   static ThemeData lightTheme = ThemeData(
-    primaryColor: primaryColor,
+    primaryColor: const Color(0xFFB7935F),
     scaffoldBackgroundColor: const Color(0xFFDFECDB),
     colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryColor,
-      onPrimary: primaryColor,
-      onSecondary: const Color(0xFFDFECDB),
       primary: const Color(0xFFB7935F),
-      background: Colors.white,
+      seedColor: const Color(0xFFB7935F),
+      onSecondary: const Color(0xFF242424),
+      onPrimary: const Color(0xFFB7935F),
+      onBackground: Colors.white,
     ),
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(color: Colors.black),
-      backgroundColor: primaryColor,
+      backgroundColor: Colors.transparent,
       elevation: 0.0,
       centerTitle: false,
       titleTextStyle: GoogleFonts.poppins(
@@ -31,9 +31,10 @@ class ApplicationTheme {
       showSelectedLabels: false,
       showUnselectedLabels: false,
       selectedIconTheme: IconThemeData(
-        color: primaryColor,
+        color: Colors.black,
+        size: 32,
       ),
-      selectedItemColor: primaryColor,
+      selectedItemColor: Colors.black,
       unselectedIconTheme: IconThemeData(
         color: Colors.grey.shade500,
       ),
@@ -41,31 +42,27 @@ class ApplicationTheme {
     ),
     textTheme: TextTheme(
         titleLarge: GoogleFonts.poppins(
-          fontSize: 22,
+          fontSize: 30,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.black,
         ),
         bodyLarge: GoogleFonts.poppins(
+          fontSize: 25,
           fontWeight: FontWeight.bold,
-          fontSize: 18,
-<<<<<<< HEAD
           color: Colors.black,
-=======
-          color: primaryColor,
->>>>>>> origin/master
         ),
         bodyMedium: GoogleFonts.poppins(
-          fontSize: 15,
+          fontSize: 25,
           fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
         bodySmall: GoogleFonts.poppins(
-          fontSize: 12,
+          fontSize: 18,
           fontWeight: FontWeight.normal,
           color: Colors.black,
         )),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: primaryColor,
+      backgroundColor: const Color(0xFFB7935F).withOpacity(0.7),
     ),
     // bottomSheetTheme: BottomSheetThemeData(
     //   backgroundColor: const Color(0xFFB7935F).withOpacity(0.7),
