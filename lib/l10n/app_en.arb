@@ -4,5 +4,9 @@
 "hadeth" : "Hadeth" ,
 "sebha" : " Sebha" ,
 "radio"  : "Radio" ,
-"settinds" : " Settings"
+"settinds" : " Settings",
+"themeMode" : "Theme Mode" ,
+"language" : "Language",
+"dark" : "Dark",
+"light": "Light"
 }

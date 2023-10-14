@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApplicationTheme {
+  static bool isDark = true;
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: const Color(0xFFB7935F),
@@ -18,14 +19,14 @@ class ApplicationTheme {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       centerTitle: false,
-      titleTextStyle: GoogleFonts.poppins(
+      titleTextStyle: GoogleFonts.elMessiri(
         fontSize: 30,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color(0xFFB7935F),
       elevation: 0.0,
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
@@ -36,27 +37,27 @@ class ApplicationTheme {
       ),
       selectedItemColor: Colors.black,
       unselectedIconTheme: IconThemeData(
-        color: Colors.grey.shade500,
+        color: Colors.white,
       ),
-      unselectedItemColor: Colors.grey.shade500,
+      unselectedItemColor: Colors.white,
     ),
     textTheme: TextTheme(
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: GoogleFonts.elMessiri(
           fontSize: 30,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
-        bodyLarge: GoogleFonts.poppins(
+        bodyLarge: GoogleFonts.elMessiri(
           fontSize: 25,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
-        bodyMedium: GoogleFonts.poppins(
+        bodyMedium: GoogleFonts.elMessiri(
           fontSize: 25,
           fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
-        bodySmall: GoogleFonts.poppins(
+        bodySmall: GoogleFonts.elMessiri(
           fontSize: 18,
           fontWeight: FontWeight.normal,
           color: Colors.black,
@@ -84,7 +85,7 @@ class ApplicationTheme {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         centerTitle: true,
-        titleTextStyle: GoogleFonts.poppins(
+        titleTextStyle: GoogleFonts.elMessiri(
           fontSize: 30,
           fontWeight: FontWeight.bold,
           color: Colors.white,
@@ -105,25 +106,25 @@ class ApplicationTheme {
       unselectedItemColor: Colors.white,
     ),
     textTheme: TextTheme(
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: GoogleFonts.elMessiri(
           fontSize: 30,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
-        bodyLarge: GoogleFonts.poppins(
-          fontWeight: FontWeight.bold,
+        bodyLarge: GoogleFonts.elMessiri(
           fontSize: 25,
-          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          color: Color(0xFFFACC1D),
         ),
-        bodyMedium: GoogleFonts.poppins(
+        bodyMedium: GoogleFonts.elMessiri(
           fontSize: 25,
           fontWeight: FontWeight.w500,
           color: Colors.white,
         ),
-        bodySmall: GoogleFonts.poppins(
-          fontSize: 20,
+        bodySmall: GoogleFonts.elMessiri(
+          fontSize: 18,
           fontWeight: FontWeight.normal,
-          color: Colors.white,
+          color: Colors.black,
         )),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: const Color(0xFF141A2E).withOpacity(0.7),

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:islami/core/provider/applicationProvider.dart';
+import 'package:provider/provider.dart';
+import '../../core/theme/applicationTheme.dart';
 
 class SebhaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuary = MediaQuery.of(context).size;
+    var theme = Theme.of(context);
+    var mainProvider = Provider.of<AppPovider>(context);
     return Column(
       children: [
         Container(
@@ -11,14 +16,14 @@ class SebhaPage extends StatelessWidget {
           child: Stack(
             children: [
               Image.asset(
-                "assets/images/head_sebha_logo.png",
+                mainProvider.sebha(),
                 width: mediaQuary.width,
                 height: mediaQuary.height / 5,
               ),
               Positioned(
                 top: 110,
                 child: Image.asset(
-                  "assets/images/body_sebha_logo.png",
+                  mainProvider.sebhaBody(),
                   height: mediaQuary.height / 4,
                   width: mediaQuary.width,
                 ),
@@ -31,35 +36,42 @@ class SebhaPage extends StatelessWidget {
         ),
         Text(
           "عدد التسبيحات",
-          style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w700, color: Colors.black),
+          style: ApplicationTheme.isDark
+              ? theme.textTheme.bodyMedium
+              : theme.textTheme.bodyMedium,
         ),
         Container(
           margin: EdgeInsets.only(top: 5),
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Color(0XFFDAC0A3),
+            color: ApplicationTheme.isDark
+                ? theme.colorScheme.onPrimary
+                : theme.colorScheme.primary,
             borderRadius:
                 BorderRadius.circular(10.0), // Set the desired border radius
           ),
           child: Text(
             "30",
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
+            style: ApplicationTheme.isDark
+                ? theme.textTheme.bodyMedium
+                : theme.textTheme.bodyMedium,
           ),
         ),
         Container(
           margin: EdgeInsets.only(top: 30),
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           decoration: BoxDecoration(
-            color: Color(0XFFB7935F),
+            color: mainProvider.isDark()
+                ? theme.colorScheme.onSecondary
+                : theme.colorScheme.primary,
             borderRadius:
                 BorderRadius.circular(10.0), // Set the desired border radius
           ),
           child: Text(
             "الحمد لله",
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
+            style: ApplicationTheme.isDark
+                ? theme.textTheme.bodyMedium
+                : theme.textTheme.bodyMedium,
           ),
         )
       ],

@@ -5,6 +5,9 @@
 "hadeth" : "حديث" ,
 "sebha" : "  تسبيح" ,
 "radio"  : "راديو" ,
-"settinds" : " اعدادات"
-
+"settinds" : " اعدادات",
+"themeMode" : "النمط",
+"language" : "اللغه",
+"dark" : "ليلي",
+"light" : "نهاري"
 }

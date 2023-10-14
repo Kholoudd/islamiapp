@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami/core/provider/applicationProvider.dart';
+import 'package:provider/provider.dart';
+import '../../../core/theme/applicationTheme.dart';
 
 typedef selectesOption = void Function();
 
@@ -19,6 +22,7 @@ class SettingItems extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuary = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var mainProvider = Provider.of<AppPovider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,7 +41,9 @@ class SettingItems extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: theme.colorScheme.onPrimary,
+                  color: mainProvider.isDark()
+                      ? theme.colorScheme.onSecondary
+                      : theme.colorScheme.primary,
                   width: 1.2,
                 )),
             child: Row(
@@ -45,12 +51,16 @@ class SettingItems extends StatelessWidget {
               children: [
                 Text(
                   selectedOne,
-                  style: theme.textTheme.bodyLarge,
+                  style: mainProvider.isDark()
+                      ? theme.textTheme.bodyMedium
+                      : theme.textTheme.bodyMedium,
                 ),
                 Icon(
                   Icons.arrow_drop_down,
                   size: 40,
-                  color: theme.colorScheme.onSecondary,
+                  color: mainProvider.isDark()
+                      ? Colors.white
+                      : theme.colorScheme.primary,
                 ),
               ],
             ),

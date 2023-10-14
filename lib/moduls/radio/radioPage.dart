@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islami/core/provider/applicationProvider.dart';
+import 'package:provider/provider.dart';
+import '../../core/theme/applicationTheme.dart';
 
 class RadioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    var mainProvider = Provider.of<AppPovider>(context);
     return Column(
       children: [
         Container(
@@ -14,8 +19,9 @@ class RadioPage extends StatelessWidget {
           margin: EdgeInsets.only(top: 30),
           child: Text(
             "إذاعه القرآن الكريم",
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
+            style: mainProvider.isDark()
+                ? theme.textTheme.bodyMedium
+                : theme.textTheme.bodyMedium,
           ),
         ),
         Padding(
@@ -26,12 +32,20 @@ class RadioPage extends StatelessWidget {
               Icon(
                 CupertinoIcons.forward_end_fill,
                 size: 35,
-                color: Color(0XFFB7935F),
+                color: mainProvider.isDark()
+                    ? theme.colorScheme.onSecondary
+                    : theme.colorScheme.primary,
               ),
               Icon(CupertinoIcons.play_arrow_solid,
-                  size: 45, color: Color(0XFFB7935F)),
+                  size: 45,
+                  color: mainProvider.isDark()
+                      ? theme.colorScheme.onSecondary
+                      : theme.colorScheme.primary),
               Icon(CupertinoIcons.forward_end_fill,
-                  size: 35, color: Color(0XFFB7935F)),
+                  size: 35,
+                  color: mainProvider.isDark()
+                      ? theme.colorScheme.onSecondary
+                      : theme.colorScheme.primary),
             ],
           ),
         )

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:islami/moduls/quran/quranDetails.dart';
 import 'package:islami/moduls/quran/widegt/items.dart';
 
+import '../../core/theme/applicationTheme.dart';
+
 class QuranPage extends StatelessWidget {
   @override
   List<String> suraNames = [
@@ -128,7 +130,8 @@ class QuranPage extends StatelessWidget {
         Image.asset("assets/images/qur2an_screen_logo.png"),
         Divider(
           thickness: 2,
-          color: theme.primaryColor,
+          color:
+              ApplicationTheme.isDark ? theme.dividerColor : theme.dividerColor,
           height: 5,
           indent: 5,
           endIndent: 5,
@@ -145,7 +148,9 @@ class QuranPage extends StatelessWidget {
             Container(
               height: 45,
               width: 2.2,
-              color: theme.primaryColor,
+              color: ApplicationTheme.isDark
+                  ? theme.dividerColor
+                  : theme.dividerColor,
             ),
             Expanded(
               child: Text(
@@ -158,7 +163,8 @@ class QuranPage extends StatelessWidget {
         ),
         Divider(
           thickness: 2,
-          color: theme.primaryColor,
+          color:
+              ApplicationTheme.isDark ? theme.dividerColor : theme.dividerColor,
           height: 5,
           indent: 5,
           endIndent: 5,

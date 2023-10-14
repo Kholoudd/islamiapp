@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/core/provider/applicationProvider.dart';
 import 'package:islami/moduls/quran/quranPage.dart';
+import 'package:provider/provider.dart';
+import '../../core/theme/applicationTheme.dart';
 
 class QuranDetails extends StatefulWidget {
   @override
@@ -13,26 +16,31 @@ class QuranDetails extends StatefulWidget {
 }
 
 class _QuranDetailsState extends State<QuranDetails> {
+  @override
   String suraContent = "";
   List<String> allSura = [];
+
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    var mainProvider = Provider.of<AppPovider>(context);
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetails;
     if (suraContent.isEmpty) {
       readFile(args.suraNumber);
     }
     var mediaQuary = MediaQuery.of(context).size;
-    var theme = Theme.of(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/images/default_bg.png"),
+        image: AssetImage(
+          mainProvider.background(),
+        ),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Colors.black,
+            color: mainProvider.isDark() ? Colors.white : Colors.black,
             size: 30,
           ),
           backgroundColor: Colors.transparent,
@@ -40,11 +48,6 @@ class _QuranDetailsState extends State<QuranDetails> {
           title: Center(
             child: Text(
               "إسلامي",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
             ),
           ),
         ),
@@ -54,7 +57,9 @@ class _QuranDetailsState extends State<QuranDetails> {
           margin: EdgeInsets.only(top: 60, left: 30),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
+            color: mainProvider.isDark()
+                ? theme.colorScheme.onPrimary
+                : Colors.white,
           ),
           child: Column(
             children: [
@@ -73,12 +78,17 @@ class _QuranDetailsState extends State<QuranDetails> {
                     Icon(
                       Icons.play_circle_fill,
                       size: 30,
+                      color: ApplicationTheme.isDark
+                          ? theme.colorScheme.onSecondary
+                          : Colors.black,
                     ),
                   ],
                 ),
               ),
               Divider(
-                color: theme.primaryColor,
+                color: ApplicationTheme.isDark
+                    ? theme.dividerColor
+                    : theme.dividerColor,
                 thickness: 3,
                 indent: 25,
                 endIndent: 25,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/applicationTheme.dart';
+
 class ItemWidgets extends StatelessWidget {
   @override
   final String suraName;
@@ -15,7 +17,7 @@ class ItemWidgets extends StatelessWidget {
         Expanded(
           child: Text(
             suraNumber,
-            style: theme.textTheme.bodyLarge,
+            style: theme.textTheme.bodyMedium,
             textAlign: TextAlign.center,
             //textAlign: TextAlign.center,
           ),
@@ -23,12 +25,13 @@ class ItemWidgets extends StatelessWidget {
         Container(
           height: 45,
           width: 2.2,
-          color: theme.primaryColor,
+          color:
+              ApplicationTheme.isDark ? theme.dividerColor : theme.dividerColor,
         ),
         Expanded(
           child: Text(
             suraName,
-            style: theme.textTheme.bodyLarge,
+            style: theme.textTheme.bodyMedium,
             textAlign: TextAlign.center,
             //textAlign: TextAlign.center,
           ),
