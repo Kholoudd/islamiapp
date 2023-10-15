@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami/core/provider/applicationProvider.dart';
 import 'package:islami/moduls/quran/quranDetails.dart';
 import 'package:islami/moduls/quran/widegt/items.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/theme/applicationTheme.dart';
 
@@ -125,6 +127,7 @@ class QuranPage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var mainProvider = Provider.of<AppPovider>(context);
     return Column(
       children: [
         Image.asset("assets/images/qur2an_screen_logo.png"),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppPovider extends ChangeNotifier {
-  ThemeMode currentTheme = ThemeMode.dark;
+  ThemeMode currentTheme = ThemeMode.light;
 
   String currentLocal = "en";
 

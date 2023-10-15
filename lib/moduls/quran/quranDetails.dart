@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/core/provider/applicationProvider.dart';
 import 'package:islami/moduls/quran/quranPage.dart';
 import 'package:provider/provider.dart';
+
 import '../../core/theme/applicationTheme.dart';
 
 class QuranDetails extends StatefulWidget {
@@ -28,6 +30,7 @@ class _QuranDetailsState extends State<QuranDetails> {
       readFile(args.suraNumber);
     }
     var mediaQuary = MediaQuery.of(context).size;
+    var local = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -47,7 +50,7 @@ class _QuranDetailsState extends State<QuranDetails> {
           elevation: 0,
           title: Center(
             child: Text(
-              "إسلامي",
+              local.islami,
             ),
           ),
         ),

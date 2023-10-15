@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/core/provider/applicationProvider.dart';
-import 'package:islami/moduls/hadeth/hadethPage.dart';
 import 'package:provider/provider.dart';
+
+import 'hadethContent.dart';
 
 class HadethDetails extends StatelessWidget {
   static const String routeName = "hadethdetails";
@@ -13,25 +15,26 @@ class HadethDetails extends StatelessWidget {
     var args = ModalRoute.of(context)?.settings.arguments as HadethContent;
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var local = AppLocalizations.of(context)!;
     var mainProvider = Provider.of<AppPovider>(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/images/default_bg.png"),
+        image: AssetImage(mainProvider.background()),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Colors.black,
+            color: mainProvider.isDark() ? Colors.white : Colors.black,
             size: 30,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Center(
             child: Text(
-              "إسلامي",
+              local.islami,
             ),
           ),
         ),
@@ -41,7 +44,9 @@ class HadethDetails extends StatelessWidget {
           width: mediaQuery.width,
           height: mediaQuery.height,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: mainProvider.isDark()
+                ? theme.colorScheme.onPrimary
+                : Colors.white,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(

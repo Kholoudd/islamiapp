@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:islami/core/provider/applicationProvider.dart';
 import 'package:provider/provider.dart';
+
 import '../../core/theme/applicationTheme.dart';
 
-class SebhaPage extends StatelessWidget {
+class SebhaPage extends StatefulWidget {
+  @override
+  State<SebhaPage> createState() => _SebhaPageState();
+}
+
+class _SebhaPageState extends State<SebhaPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var mediaQuary = MediaQuery.of(context).size;
